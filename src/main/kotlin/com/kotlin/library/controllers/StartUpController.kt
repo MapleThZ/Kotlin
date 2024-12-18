@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
 import com.kotlin.library.services.LibraryService
 import com.kotlin.library.services.LibraryServiceTemp2
-import com.kotlin.library.models.requests.MessagePost
+import com.kotlin.library.models.MessagePost
 
 
 @RestController

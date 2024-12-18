@@ -1,7 +1,7 @@
 package com.kotlin.library.services
 
 import org.springframework.stereotype.Service
-import com.kotlin.library.models.requests.MessagePost
+import com.kotlin.library.models.MessagePost
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString

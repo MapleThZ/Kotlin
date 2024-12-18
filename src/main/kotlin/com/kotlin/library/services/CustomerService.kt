@@ -6,6 +6,8 @@ import com.kotlin.library.repositories.CustomerRepository
 import com.kotlin.library.entities.Customer
 import com.kotlin.library.models.CustomerRequest
 import org.modelmapper.ModelMapper
+import java.sql.Timestamp
+import java.util.Date
 
 @Service
 class CustomerService (@Autowired private val customerRepository: CustomerRepository) {
@@ -15,14 +17,15 @@ class CustomerService (@Autowired private val customerRepository: CustomerReposi
     }
 
     fun getUserById(id: Long): Customer? {
-        return customerRepository.getReferenceById(id)
+        var cusTemp : Customer = customerRepository.findById(id).get()
+        return cusTemp
     }
 
     fun createUser(customerReq: CustomerRequest): Customer {
 
-        val modelMapper = ModelMapper()
+        var time: Timestamp = Timestamp(Date().time)
 
-        val customer = modelMapper.map(customerReq, Customer::class.java)
+        val customer: Customer = Customer(customerReq.id,customerReq.firstName,customerReq.lastName,customerReq.telNo,customerReq.email,customerReq.id.toString(),time,customerReq.id.toString(),time)
 
         return customerRepository.save(customer)
     }

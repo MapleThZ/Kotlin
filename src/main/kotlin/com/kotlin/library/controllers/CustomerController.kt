@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 import com.kotlin.library.services.LibraryService
 import com.kotlin.library.services.LibraryServiceTemp2
 import com.kotlin.library.services.CustomerService
-import com.kotlin.library.models.requests.MessagePost
+import com.kotlin.library.models.MessagePost
 import com.kotlin.library.entities.Customer
 import com.kotlin.library.models.CustomerRequest
 
