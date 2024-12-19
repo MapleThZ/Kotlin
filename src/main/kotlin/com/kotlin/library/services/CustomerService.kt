@@ -2,7 +2,6 @@ package com.kotlin.library.services
 
 import org.springframework.stereotype.Service
 import org.springframework.beans.factory.annotation.Autowired
-// import org.apache.commons.beanutils.BeanUtils
 import com.kotlin.library.repositories.CustomerRepository
 import com.kotlin.library.entities.Customer
 import com.kotlin.library.models.CustomerRequest

@@ -7,6 +7,7 @@ import com.kotlin.library.entities.Customer
 import com.kotlin.library.models.CustomerRequest
 import com.kotlin.library.models.CustomerResponse
 import java.util.*
+import org.springframework.http.ResponseEntity
 
 
 @RestController
@@ -17,17 +18,17 @@ class CustomerController() {
     lateinit var customerService: CustomerService
 
     @GetMapping("/findByFirstName")
-    fun findByFirstName(firstName: String): List<CustomerResponse> {
-        return customerService.getUserByUsername(firstName)
+    fun findByFirstName(firstName: String): ResponseEntity<List<CustomerResponse>> {
+        return ResponseEntity.ok(customerService.getUserByUsername(firstName))
     }
 
     @GetMapping("/findById")
-    fun findById(idNo:String): CustomerResponse {
-        return customerService.getUserById(idNo)
+    fun findById(idNo:String): ResponseEntity<CustomerResponse>  {
+        return ResponseEntity.ok(customerService.getUserById(idNo))
     }
 
     @PostMapping("/createUser")
-    fun createUser(@RequestBody customerReq: CustomerRequest): CustomerResponse {
-        return customerService.createUser(customerReq)
+    fun createUser(@RequestBody customerReq: CustomerRequest):  ResponseEntity<CustomerResponse> {
+        return ResponseEntity.ok(customerService.createUser(customerReq))
     }
 }
