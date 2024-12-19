@@ -23,6 +23,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
+	implementation("commons-beanutils:commons-beanutils:1.9.4")
+
+	implementation("org.apache.commons:commons-lang3:3.12.0")
+
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
@@ -38,8 +42,16 @@ dependencies {
 	runtimeOnly("org.springframework.boot:spring-boot-devtools")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform() // Enables JUnit 5 for testing
+// tasks.withType<Test> {
+//     useJUnitPlatform() // Enables JUnit 5 for testing
+// }
+
+// tasks.withType<JavaExec> {
+//     jvmArgs = listOf("-Duser.timezone=Asia/Bangkok")
+// }
+
+tasks.bootRun {
+    jvmArgs = listOf("-Duser.timezone=Asia/Bangkok")
 }
 
 tasks.compileKotlin {
