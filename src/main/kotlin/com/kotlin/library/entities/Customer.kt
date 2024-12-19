@@ -8,13 +8,13 @@ import java.util.Date
 @Table(name = "customer" , schema = "demo")
 data class Customer (
     @Id
-    val id: Long = 0,
+    val id: String = "",
     @Column(name="first_name")
     val firstName : String = "",
     @Column(name="last_name")
     val lastName:String = "",
     @Column(name="tel_no")
-    val telNo:Long = 0,
+    val telNo:String = "",
     @Column(name="email")
     val email:String = "",
     @Column(name="create_name")

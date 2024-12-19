@@ -4,9 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CustomerRequest (
-    val id: Long,
+    val id: String,
     val firstName : String,
     val lastName:String,
-    val telNo:Long,
+    val telNo:String,
     val email:String
     ) 
