@@ -27,7 +27,7 @@ class CustomerController() {
         return ResponseEntity.ok(customerService.getUserById(idNo))
     }
 
-    @PostMapping("/createUser")
+    @PostMapping("/createUser", headers = ["Authorization"])
     fun createUser(@RequestBody customerReq: CustomerRequest):  ResponseEntity<CustomerResponse> {
         return ResponseEntity.ok(customerService.createUser(customerReq))
     }

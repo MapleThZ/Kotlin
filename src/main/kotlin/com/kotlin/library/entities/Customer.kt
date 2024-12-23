@@ -1,6 +1,8 @@
 package com.kotlin.library.entities
 
 import jakarta.persistence.*
+import jakarta.validation.constraints.NotEmpty
+import jakarta.validation.constraints.NotNull
 import java.sql.Timestamp
 import java.util.Date
 
@@ -8,6 +10,8 @@ import java.util.Date
 @Table(name = "customer" , schema = "demo")
 data class Customer (
     @Id
+    @NotNull
+    @NotEmpty
     val id: String = "",
     @Column(name="first_name")
     val firstName : String = "",

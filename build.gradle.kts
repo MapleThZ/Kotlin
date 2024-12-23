@@ -23,6 +23,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
+	implementation("org.hibernate.validator:hibernate-validator:6.2.0.Final")
+	implementation("javax.validation:validation-api:2.0.1.Final")
+
 	implementation("commons-beanutils:commons-beanutils:1.9.4")
 
 	implementation("org.apache.commons:commons-lang3:3.12.0")
