@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/customer")
 class CustomerController() {
 
     @Autowired 

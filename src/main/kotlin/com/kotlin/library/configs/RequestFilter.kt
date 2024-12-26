@@ -13,6 +13,9 @@ import java.io.IOException
 
 @Component
 class RequestFilter : Filter {
+
+    val listBypass = arrayListOf("/swagger","/v3/api-docs","/swagger-ui","/api-docs")
+
     @Throws(ServletException::class, IOException::class)
     override fun doFilter(request: ServletRequest, response: ServletResponse, chain: FilterChain) {
         val httpRequest = request as HttpServletRequest
@@ -24,11 +27,14 @@ class RequestFilter : Filter {
         val requestUri = httpRequest.requestURI
         val authorizationHeader = httpRequest.getHeader("Authorization")
 
-        println("requestUri : $authorizationHeader")
+        println("authorizationHeader : $authorizationHeader")
 
         // Bypass authorization for Swagger API URIs or public endpoints
-        if (!(requestUri.startsWith("/swagger") || requestUri.startsWith("/v3/api-docs")
-            || requestUri.startsWith("/swagger-ui") || requestUri.startsWith("/api-docs"))) {
+        val result = listBypass.any { bypass -> requestUri.startsWith(bypass, ignoreCase = true) }
+        println("Bypass : $result")
+        if(result){
+            chain.doFilter(request, response)
+        } else {
             if (authorizationHeader.isNullOrEmpty()) {
                 // Return a 400 Bad Request if the Authorization header is missing
                 httpResponse.status = HttpServletResponse.SC_BAD_REQUEST
@@ -36,9 +42,6 @@ class RequestFilter : Filter {
                 return
             }
         }
-
-        // Continue the request-response chain
-        chain.doFilter(request, response)
     }
 
     override fun init(filterConfig: FilterConfig?) {}
